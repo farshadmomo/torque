@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
+.torque-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.torque-title {
+    font-family: "Mj_Casablanca Light";
+    font-size: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.torque-selector-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.select-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    background-color: brown;
+    width: 50%;
 }
-
-.App-link {
-  color: #61dafb;
+.date-inputs {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    height: 50px;
+    justify-content: space-around;
+    margin-top: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    direction: rtl;
 }
