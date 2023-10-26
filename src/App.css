@@ -17,21 +17,56 @@
 .select-container {
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: end;
-    background-color: brown;
+    justify-content: flex-end;
+    align-items: flex-start;
     width: 50%;
 }
 .date-inputs {
     display: flex;
     flex-direction: row;
-    width: 35%;
-    height: 50px;
+    height: 70px;
     justify-content: space-around;
     margin-top: 10px;
+    gap: 30px;
 }
-.form-container {
+.randd-container {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.radio-container {
+    height: 55%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 25px;
+    padding-right: 20px;
+    align-items: flex-start;
+    font-size: 17px;
+    margin-top: -10px;
+}
+.radio-container>input {
+    margin-left: -10px;
+}
+.radio-header {
+    padding-right: 20px;
+    padding-top: 40px;
+}
+.form-contex {
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     direction: rtl;
+    width: 100%;
+    height: 300px;
+}
+.column-button {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 250px;
+}
+.form-submit {
+    height: 35px;
+    margin: 20px 35%;
 }
