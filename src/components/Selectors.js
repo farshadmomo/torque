@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import NativeSelect from '@mui/material/NativeSelect'
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -19,6 +20,7 @@ export default function Selectors() {
     })
     function handleChange(event) {
         const {name,value} = event.target
+        setAge(event.target.value);
 
     setFormData(prevState => ({
                 ...prevState,
@@ -26,77 +28,63 @@ export default function Selectors() {
             })
         )
     }
-    const DateFrom = () => {
-        const [startDate, setStartDate] = React.useState(new Date());
-        return (
-            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-        );
-    };
     const [value, setValue] = React.useState(dayjs('2022-04-17'));
+    const [age, setAge] = React.useState('');
+
     return (
         <div className='form-container'>
             <form className='form-contex'>
                 <div className='column-button'>
             <div className="select-container">
-                <FormControl fullWidth sx={{ m: 1, width: '80%' }}>
-                    <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: '80%' }}>
+                    <InputLabel id="demo-simple-select-standard-label">موقعیت اندازه گیری</InputLabel>
                     <Select
-                        labelId="demo-simple-select-autowidth-label"
-                        id="demo-simple-select-autowidth"
-                        value={formData.age}
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        value={age}
                         onChange={handleChange}
-                        autoWidth
                         label="Age"
-                        name="age"
                     >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Twenty</MenuItem>
-                        <MenuItem value={21}>Twenty one</MenuItem>
-                        <MenuItem value={22}>Twenty one and a half</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl fullWidth sx={{ m: 1, width: '80%' }}>
-                    <InputLabel id="person-label">person</InputLabel>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: '80%' }}>
+                    <InputLabel id="demo-simple-select-standard-label">نوع چک لیست</InputLabel>
                     <Select
-                        labelId="person-lable"
-                        id="person-label-id"
-                        value={formData.person}
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        value={age}
                         onChange={handleChange}
-                        autoWidth
-                        label="Person"
-                        name="person"
+                        label="Age"
                     >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>mmd</MenuItem>
-                        <MenuItem value={21}>KASRA</MenuItem>
-                        <MenuItem value={22}>Farshad</MenuItem>
-                        <MenuItem value={22}>Farshad1223</MenuItem>
-                        <MenuItem value={22}>Farshad1341</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl fullWidth sx={{ m: 1, width: '80%' }}>
-                    <InputLabel id="person-label">person</InputLabel>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: '80%' }}>
+                    <InputLabel id="demo-simple-select-standard-label">اتصال</InputLabel>
                     <Select
-                        labelId="person-lable"
-                        id="person-label-id"
-                        value={formData.person}
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        value={age}
                         onChange={handleChange}
-                        autoWidth
-                        label="Person"
-                        name="person"
+                        label="Age"
                     >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>mmd</MenuItem>
-                        <MenuItem value={21}>KASRA</MenuItem>
-                        <MenuItem value={22}>Farshad</MenuItem>
-                        <MenuItem value={22}>Farshad1223</MenuItem>
-                        <MenuItem value={22}>Farshad1341</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
                     </Select>
                 </FormControl>
             </div>
