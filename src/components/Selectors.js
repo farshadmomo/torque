@@ -3,33 +3,31 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import NativeSelect from '@mui/material/NativeSelect'
-// import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 import dayjs from 'dayjs';
-
 
 export default function Selectors() {
     const [formData, setFormData] = React.useState({
-        age:"",
-        person:""
+        measurePosition:"",
+        checkList:"",
+        connection:"",
+        fromDate:"",
+        toDate:"",
+        reportType:""
     })
     function handleChange(event) {
         const {name,value} = event.target
-        setAge(event.target.value);
-
-    setFormData(prevState => ({
-                ...prevState,
-                [name] : value
-            })
-        )
+        setFormData(prevState => ({
+            ...prevState,
+            [name] : value
+        }))
+        console.log(formData)
     }
-    const [value, setValue] = React.useState(dayjs('2022-04-17'));
-    const [age, setAge] = React.useState('');
+    // const [value, setValue] = React.useState(dayjs('2022-04-17'));
 
     return (
         <div className='form-container'>
@@ -41,7 +39,8 @@ export default function Selectors() {
                     <Select
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
-                        value={age}
+                        value={formData.measurePosition}
+                        name='measurePosition'
                         onChange={handleChange}
                         label="Age"
                     >
@@ -58,9 +57,10 @@ export default function Selectors() {
                     <Select
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
-                        value={age}
+                        value={formData.checkList}
+                        name='checkList'
                         onChange={handleChange}
-                        label="Age"
+                        label="checkList"
                     >
                         <MenuItem value="">
                             <em>None</em>
@@ -75,8 +75,9 @@ export default function Selectors() {
                     <Select
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
-                        value={age}
+                        value={formData.connection}
                         onChange={handleChange}
+                        name="connection"
                         label="Age"
                     >
                         <MenuItem value="">
@@ -90,33 +91,53 @@ export default function Selectors() {
             </div>
             <div className='randd-container'>
             <div className='date-inputs' >
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
                     <DemoContainer components={['DatePicker', 'DatePicker']}>
                         <DatePicker
-                            label="az tarikh"
-                            value={value}
-                            onChange={(newValue) => setValue(newValue)}
+                            label="از تاریخ"
+                            name="fromDate"
+                            value={formData.fromDate}
+                            onChange={date => handleChange({ target: { value: date.toLocaleDateString('fa-IR'), name: 'fromDate' } })}
                         />
                     </DemoContainer>
                 </LocalizationProvider>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
                     <DemoContainer components={['DatePicker', 'DatePicker']}>
                         <DatePicker
-                            label="ta tarikh"
-                            value={value}
-                            onChange={(newValue) => setValue(newValue)}
+                            label="تا تاریخ"
+                            name="toDate"
+                            value={formData.toDate}
+                            onChange={date => handleChange({ target: { value: date.toLocaleDateString('fa-IR'), name: 'toDate' } })}
                         />
                     </DemoContainer>
                 </LocalizationProvider>
             </div>
-                <h2 className='radio-header'>Custom Radio Buttons</h2>
+                <h2 className='radio-header'>نوع گزارش</h2>
                 <div className='radio-container'>
-                    <input type="radio" id="html" name="fav_language" value="HTML" />
-                        <label htmlFor="html">HTML</label>
-                        <input type="radio" id="css" name="fav_language" value="CSS" />
-                            <label htmlFor="css">CSS</label>
-                            <input type="radio" id="javascript" name="fav_language" value="JavaScript" />
-                                <label for="javascript">JavaScript</label>
+                        <input
+                            type="radio"
+                            id="connectionList"
+                            name="reportType"
+                            value="connectionList"
+                            onChange={handleChange}
+                        />
+                      <label htmlFor="connectionList">لیست اتصالات به ترتیب امتیاز منفی</label>
+                         <input
+                             type="radio"
+                             id="NA"
+                             name="reportType"
+                             value="NA"
+                             onChange={handleChange}
+                         />
+                     <label htmlFor="NA">+NA</label>
+                         <input
+                             type="radio"
+                             id="NB"
+                             name="reportType"
+                             value="NB"
+                             onChange={handleChange}
+                         />
+                     <label for="NB">NB</label>
                 </div>
             </div>
 
