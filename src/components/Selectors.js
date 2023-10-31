@@ -3,20 +3,20 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { DemoContainer, DemoItem  } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 import dayjs from 'dayjs';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+import { parseISO, format } from 'date-fns';
 
 export default function Selectors() {
     const [formData, setFormData] = React.useState({
         measurePosition:"",
         checkList:"",
         connection:"",
-        fromDate:"",
-        toDate:"",
+        reportDate:"",
         reportType:""
     })
     function handleChange(event) {
@@ -91,25 +91,24 @@ export default function Selectors() {
             </div>
             <div className='randd-container'>
             <div className='date-inputs' >
+                {/*<LocalizationProvider dateAdapter={AdapterDateFnsJalali}>*/}
+                {/*    <DemoContainer components={['DatePicker', 'DatePicker']}>*/}
+                {/*        <DatePicker*/}
+                {/*            label="از تاریخ"*/}
+                {/*            name="fromDate"*/}
+                {/*            value={formData.fromDate}*/}
+                {/*            onChange={date => handleChange({ target: { value: date.toLocaleDateString('fa-IR'), name: 'fromDate' } })}*/}
+                {/*        />*/}
+                {/*    </DemoContainer>*/}
+                {/*</LocalizationProvider>*/}
                 <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
-                    <DemoContainer components={['DatePicker', 'DatePicker']}>
-                        <DatePicker
-                            label="از تاریخ"
-                            name="fromDate"
-                            value={formData.fromDate}
-                            onChange={date => handleChange({ target: { value: date.toLocaleDateString('fa-IR'), name: 'fromDate' } })}
-                        />
-                    </DemoContainer>
-                </LocalizationProvider>
-                <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
-                    <DemoContainer components={['DatePicker', 'DatePicker']}>
-                        <DatePicker
-                            label="تا تاریخ"
-                            name="toDate"
-                            value={formData.toDate}
-                            onChange={date => handleChange({ target: { value: date.toLocaleDateString('fa-IR'), name: 'toDate' } })}
-                        />
-                    </DemoContainer>
+                        <DemoItem label="تاریخ گزارش" component="DateRangePicker" value={formData.reportDate} >
+                            <DateRangePicker
+                                name="reportDate"
+                                onChange={date => handleChange({ target: { value: new Date(date).toLocaleDateString('fa-IR') , name: 'reportDate' } })}
+                                // defaultValue={[formData.fromDate, formData.toDate]}
+                            />
+                        </DemoItem>
                 </LocalizationProvider>
             </div>
                 <h2 className='radio-header'>نوع گزارش</h2>
@@ -137,7 +136,7 @@ export default function Selectors() {
                              value="NB"
                              onChange={handleChange}
                          />
-                     <label for="NB">NB</label>
+                     <label htmlFor="NB">NB</label>
                 </div>
             </div>
 
