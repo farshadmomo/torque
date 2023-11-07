@@ -3,16 +3,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { DemoContainer, DemoItem  } from '@mui/x-date-pickers/internals/demo';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
-import dayjs from 'dayjs';
 // import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import {Provider , defaultTheme , colorScheme} from '@adobe/react-spectrum';
-import {DateRangePicker} from '@adobe/react-spectrum'
-import { parseISO, format } from 'date-fns';
-import {logDOM} from "@testing-library/react";
+import {DateRangePicker, defaultTheme, Provider} from '@adobe/react-spectrum';
 import {parseDate} from '@internationalized/date';
 
 export default function Selectors() {
@@ -95,25 +87,6 @@ export default function Selectors() {
             </div>
             <div className='randd-container'>
             <div className='date-inputs' >
-                {/*<LocalizationProvider dateAdapter={AdapterDateFnsJalali}>*/}
-                {/*    <DemoContainer components={['DatePicker', 'DatePicker']}>*/}
-                {/*        <DatePicker*/}
-                {/*            label="از تاریخ"*/}
-                {/*            name="fromDate"*/}
-                {/*            value={formData.fromDate}*/}
-                {/*            onChange={date => handleChange({ target: { value: date.toLocaleDateString('fa-IR'), name: 'fromDate' } })}*/}
-                {/*        />*/}
-                {/*    </DemoContainer>*/}
-                {/*</LocalizationProvider>*/}
-                {/*<LocalizationProvider dateAdapter={AdapterDateFnsJalali}>*/}
-                {/*        <DemoItem label="تاریخ گزارش" component="DateRangePicker" value={formData.reportDate} >*/}
-                {/*            <DateRangePicker*/}
-                {/*                name="reportDate"*/}
-                {/*                onChange={date => handleChange({ target: { value: new Date(date).toLocaleDateString('fa-IR') , name: 'reportDate' } })}*/}
-                {/*                // defaultValue={[formData.fromDate, formData.toDate]}*/}
-                {/*            />*/}
-                {/*        </DemoItem>*/}
-                {/*</LocalizationProvider>*/}
                 <Provider width="100%" backgroundColor="green-500" locale="fa-IR-u-ca-persian" theme={defaultTheme} colorScheme="lighter">
                     <DateRangePicker width="70%" locale="fa-IR-u-ca-persian" label="محدودیت تاریخ" value={formData.reportDate} name="reportDate" onChange={date => {handleChange({ target: { value: date ,name:"reportDate"} })}} />
                     {/*<p>Start date: {`${formData.reportDate?.start?.day ?? ""}-${formData.reportDate?.start?.month ?? ""}-${formData.reportDate?.start?.year ?? ""}`}</p>*/}
