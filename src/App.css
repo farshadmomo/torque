@@ -1,7 +1,16 @@
+*{
+    font-family:"B Homa" ;
+}
+.form-container {
+
+}
 .torque-header {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    background-color: #eeeeff;
+    border:2px #000000 solid;
+    border-bottom:none;
 }
 
 .torque-title {
@@ -20,14 +29,16 @@
     justify-content: flex-end;
     align-items: flex-start;
     width: 50%;
+    margin-right: 50px;
 }
 .date-inputs {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 70px;
-    justify-content: space-around;
-    margin-top: 10px;
-    gap: 30px;
+    justify-content: start;
+    margin-top: 50px;
+    padding-top: 20px;
+    gap: 10px;
 }
 .randd-container {
     display: flex;
@@ -39,14 +50,15 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 25px;
     padding-right: 20px;
     align-items: flex-start;
     font-size: 17px;
     margin-top: -10px;
 }
-.radio-container>input {
-    margin-left: -10px;
+.radio-items>label {
+    padding-right: 10px;
 }
 .radio-header {
     padding-right: 20px;
@@ -58,15 +70,35 @@
     justify-content: space-around;
     direction: rtl;
     width: 100%;
-    height: 300px;
+    height: 350px;
+    background-color: #eeeeff;
+    border:2px #000000 solid;
+    border-top:none;
 }
 .column-button {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 250px;
+    margin-bottom: 30px;
 }
 .form-submit {
-    height: 35px;
-    margin: 20px 35%;
+    margin: 50px 35%;
+    font-size: 15px;
+    background-color: #ccddff;
+    border-radius: 12px;
+}
+.range-picker {
+    border-radius: 15px;
+    border: 1px black solid;
+    padding: 18px 25px;
+    background-color: white;
+    height: 22px;
+    box-shadow: 0 0 2px black;
+    font-size: 15px;
+}
+.range-picker:focus {
+    outline: none;
+    border: 1px solid #0c8af8;
+    box-shadow: 0 0 2px 1px #0074d9;
 }
