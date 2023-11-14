@@ -1,12 +1,12 @@
 import './App.css';
 import Header from "./components/Header";
-import Selectors from "./components/Selectors";
+import Inputs from "./components/Inputs";
 
 function App() {
     return (
         <div className="App">
             <Header/>
-            <Selectors/>
+            <Inputs/>
         </div>
     );
 }

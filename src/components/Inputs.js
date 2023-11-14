@@ -3,35 +3,66 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import {DateRangePicker, defaultTheme, Provider} from '@adobe/react-spectrum';
-import {parseDate} from '@internationalized/date';
-
-export default function Selectors() {
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import DatePicker, { DateObject } from "react-multi-date-picker"
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import rtlPlugin from 'stylis-plugin-rtl';
+export default function Inputs() {
+    const theme = createTheme({
+        direction: 'rtl',
+    });
+    const cacheRtl = createCache({
+        key: "muirtl",
+        stylisPlugins: [rtlPlugin],
+    });
     const [formData, setFormData] = React.useState({
         measurePosition:"",
         checkList:"",
         connection:"",
-        reportDate:{start:parseDate("2023-11-07"),end:parseDate("2023-11-07")},
+        reportDate:"",
+        // reportStartDate:"",
+        // reportEndDate:"",
         reportType:""
     })
     function handleChange(event) {
         const {name,value} = event.target
+        // if(name==="reportDate"){
+        //     if(value.length===2){
+        //     setFormData(prevState => ({
+        //         ...prevState,
+        //         reportStartDate : value[0].toISOString().substring(0,10),
+        //         reportEndDate : value[1].toISOString().substring(0,10),
+        //     }))            }
+        // } else {
         setFormData(prevState => ({
             ...prevState,
             [name] : value
         }))
-        console.log(name,value)
+    //}
+    //     console.log(name,value)
     }
     // const [value, setValue] = React.useState(dayjs('2022-04-17'));
+    // const [values, setValues] = React.useState([
+    //     new DateObject().subtract(4, "days"),
+    //     new DateObject().add(4, "days")
+    // ])
+    function handleSubmit(event) {
+        event.preventDefault()
+        console.log(formData)
+    }
 
     return (
         <div className='form-container'>
-            <form className='form-contex'>
+            <form className='form-contex' onSubmit={handleSubmit}>
                 <div className='column-button'>
-            <div className="select-container">
-                <FormControl variant="standard" sx={{ m: 1, minWidth: '80%' }}>
-                    <InputLabel id="demo-simple-select-standard-label">موقعیت اندازه گیری</InputLabel>
+                    <CacheProvider value={cacheRtl}>
+                    <ThemeProvider theme={theme}>
+            <div className="select-container" dir="rtl">
+                <FormControl variant="standard" sx={{ m: 1, minWidth: '80%'}} theme={theme}>
+                    <InputLabel id="demo-simple-select-standard-label" sx={{fontSize : "20px"}}>موقعیت اندازه گیری</InputLabel>
                     <Select
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
@@ -49,7 +80,7 @@ export default function Selectors() {
                     </Select>
                 </FormControl>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: '80%' }}>
-                    <InputLabel id="demo-simple-select-standard-label">نوع چک لیست</InputLabel>
+                    <InputLabel id="demo-simple-select-standard-label" sx={{fontSize : "20px"}}>نوع چک لیست</InputLabel>
                     <Select
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
@@ -67,7 +98,7 @@ export default function Selectors() {
                     </Select>
                 </FormControl>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: '80%' }}>
-                    <InputLabel id="demo-simple-select-standard-label">اتصال</InputLabel>
+                    <InputLabel id="demo-simple-select-standard-label" sx={{fontSize : "20px"}}>اتصال</InputLabel>
                     <Select
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
@@ -85,16 +116,26 @@ export default function Selectors() {
                     </Select>
                 </FormControl>
             </div>
+                    </ThemeProvider>
+                    </CacheProvider>
             <div className='randd-container'>
             <div className='date-inputs' >
-                <Provider width="100%" backgroundColor="green-500" locale="fa-IR-u-ca-persian" theme={defaultTheme} colorScheme="lighter">
-                    <DateRangePicker width="70%" locale="fa-IR-u-ca-persian" label="محدودیت تاریخ" value={formData.reportDate} name="reportDate" onChange={date => {handleChange({ target: { value: date ,name:"reportDate"} })}} />
-                    {/*<p>Start date: {`${formData.reportDate?.start?.day ?? ""}-${formData.reportDate?.start?.month ?? ""}-${formData.reportDate?.start?.year ?? ""}`}</p>*/}
-                    {/*<p>End date: {formData.reportDate?.end}</p>*/}
-                </Provider>
+                <label className='range-label'>محدوده تاریخ</label>
+                <DatePicker
+                    inputClass='range-picker'
+                    name='reportDate'
+                    value={formData.reportDate}
+                    onChange={rangeDate => handleChange({target: {value:rangeDate , name:"reportDate"}})}
+                    range
+                    rangeHover
+                    calendar={persian}
+                    locale={persian_fa}
+                    showOtherDays
+                />
             </div>
                 <h2 className='radio-header'>نوع گزارش</h2>
                 <div className='radio-container'>
+                    <div className='radio-items'>
                         <input
                             type="radio"
                             id="connectionList"
@@ -103,6 +144,8 @@ export default function Selectors() {
                             onChange={handleChange}
                         />
                       <label htmlFor="connectionList">لیست اتصالات به ترتیب امتیاز منفی</label>
+                    </div>
+                    <div className='radio-items'>
                          <input
                              type="radio"
                              id="NA"
@@ -111,6 +154,8 @@ export default function Selectors() {
                              onChange={handleChange}
                          />
                      <label htmlFor="NA">+NA</label>
+                    </div>
+                    <div className='radio-items'>
                          <input
                              type="radio"
                              id="NB"
@@ -119,11 +164,12 @@ export default function Selectors() {
                              onChange={handleChange}
                          />
                      <label htmlFor="NB">NB</label>
+                    </div>
                 </div>
             </div>
 
                 </div>
-                <button className='form-submit'>submit</button>
+                <button className='form-submit'>اجرای گزارش</button>
             </form>
         </div>
     )
