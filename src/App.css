@@ -1,5 +1,5 @@
 *{
-    font-family:"B Homa" ;
+    font-family:"B Homa";
 }
 .form-container {
 
@@ -7,7 +7,7 @@
 .torque-header {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    padding-top: 20px;
     background-color: #eeeeff;
     border:2px #000000 solid;
     border-bottom:none;
@@ -84,7 +84,8 @@
 }
 .form-submit {
     margin: 50px 35%;
-    font-size: 15px;
+    padding: 4px 0;
+    font-size: 18px;
     background-color: #ccddff;
     border-radius: 12px;
 }
@@ -102,3 +103,19 @@
     border: 1px solid #0c8af8;
     box-shadow: 0 0 2px 1px #0074d9;
 }
+.gozaresh-container {
+    background-color: lightcoral;
+    display: flex;
+    border-bottom: 2px black solid;
+}
+.gozaresh-child-container {
+    background-color: chartreuse;
+    width: 50%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.gozaresh-child-container>div {
+    margin: 17px 50px;
+}
+
