@@ -55,7 +55,7 @@ export default function Inputs() {
     }
 
     return (
-        <div className='form-container'>
+        <div className='form-container' >
             <form className='form-contex' onSubmit={handleSubmit}>
                 <div className='column-button'>
                     <CacheProvider value={cacheRtl}>
