@@ -1,3 +1,6 @@
+@media print {
+    .no-print { display: none}
+}
 *{
     font-family:"B Homa";
 }
@@ -104,12 +107,12 @@
     box-shadow: 0 0 2px 1px #0074d9;
 }
 .gozaresh-container {
-    background-color: lightcoral;
+    /*background-color: lightcoral;*/
     display: flex;
     border-bottom: 2px black solid;
 }
 .gozaresh-child-container {
-    background-color: chartreuse;
+    /*background-color: chartreuse;*/
     width: 50%;
     height: 200px;
     display: flex;

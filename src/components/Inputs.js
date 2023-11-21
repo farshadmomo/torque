@@ -10,6 +10,7 @@ import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import rtlPlugin from 'stylis-plugin-rtl';
+import EjraGozaresh from "./EjraGozaresh";
 export default function Inputs() {
     const theme = createTheme({
         direction: 'rtl',
@@ -52,10 +53,17 @@ export default function Inputs() {
     function handleSubmit(event) {
         event.preventDefault()
         console.log(formData)
+        // const inputsData = [
+        //     {measurePosition : formData.measurePosition},
+        //     {checkList : formData.checkList},
+        //     {connection : formData.connection},
+        //     {reportDate : formData.reportDate},
+        //     {reportType : formData.reportType}
+        // ]
     }
 
     return (
-        <div className='form-container' >
+        <div className='form-container'>
             <form className='form-contex' onSubmit={handleSubmit}>
                 <div className='column-button'>
                     <CacheProvider value={cacheRtl}>
@@ -140,7 +148,7 @@ export default function Inputs() {
                             type="radio"
                             id="connectionList"
                             name="reportType"
-                            value="connectionList"
+                            value="connection list"
                             onChange={handleChange}
                         />
                       <label htmlFor="connectionList">لیست اتصالات به ترتیب امتیاز منفی</label>
@@ -171,6 +179,13 @@ export default function Inputs() {
                 </div>
                 <button className='form-submit'>اجرای گزارش</button>
             </form>
+            <EjraGozaresh
+                measurePosition = {formData.measurePosition}
+                checkList = {formData.checkList}
+                connection = {formData.connection}
+                reportDate = {formData.reportDate}
+                reportType = {formData.reportType}
+            />
         </div>
     )
 }
