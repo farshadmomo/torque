@@ -11,7 +11,7 @@ export default function EjraGozaresh(props) {
                 </div>
                 <div className='gozaresh-child-container'>
                     <div>محدوده تاری‍‍خ:
-                        <span>{props.reportStartDate}</span>
+                        <span>{new Date(props.reportStartDate).toLocaleDateString('fa-IR')} تا {new Date(props.reportEndDate).toLocaleDateString('fa-IR')}</span>
                     </div>
                     <div>نوع گزارش:{props.reportType}</div>
                 </div>
