@@ -23,21 +23,21 @@ export default function Inputs() {
         measurePosition:"",
         checkList:"",
         connection:"",
-        reportDate:[],
-        //reportStartDate:"",
-        //reportEndDate:"",
+        // reportDate:[],
+        reportStartDate:"",
+        reportEndDate:"",
         reportType:""
     })
     function handleChange(event) {
         const {name,value} = event.target
-         //if(name==="reportDate"){
-        //     if(value.length===2){
-        //     setFormData(prevState => ({
-        //         ...prevState,
-        //           reportStartDate : new Date(value[0]).toISOString().substring(0,10),
-        //           reportEndDate : new Date(value[1]).toISOString().substring(0,10),
-        //     }))            }
-        //} else
+         if(name==="reportDate"){
+            if(value.length===2){
+            setFormData(prevState => ({
+                ...prevState,
+                  reportStartDate : new Date(value[0]).toISOString().substring(0,10),
+                  reportEndDate : new Date(value[1]).toISOString().substring(0,10),
+            }))            }
+        } else
         {
         setFormData(prevState => ({
             ...prevState,
@@ -184,7 +184,8 @@ export default function Inputs() {
                 measurePosition = {formData.measurePosition}
                 checkList = {formData.checkList}
                 connection = {formData.connection}
-                reportDate = {formData.reportDate}
+                reportStartDate = {formData.reportStartDate}
+                reportEndDate = {formData.reportEndDate}
                 reportType = {formData.reportType}
             />
         </div>
