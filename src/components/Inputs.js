@@ -23,26 +23,27 @@ export default function Inputs() {
         measurePosition:"",
         checkList:"",
         connection:"",
-        reportDate:"",
-        // reportStartDate:"",
-        // reportEndDate:"",
+        reportDate:[],
+        //reportStartDate:"",
+        //reportEndDate:"",
         reportType:""
     })
     function handleChange(event) {
         const {name,value} = event.target
-        // if(name==="reportDate"){
+         //if(name==="reportDate"){
         //     if(value.length===2){
         //     setFormData(prevState => ({
         //         ...prevState,
-        //         reportStartDate : value[0].toISOString().substring(0,10),
-        //         reportEndDate : value[1].toISOString().substring(0,10),
+        //           reportStartDate : new Date(value[0]).toISOString().substring(0,10),
+        //           reportEndDate : new Date(value[1]).toISOString().substring(0,10),
         //     }))            }
-        // } else {
+        //} else
+        {
         setFormData(prevState => ({
             ...prevState,
             [name] : value
         }))
-    //}
+    }
     //     console.log(name,value)
     }
     // const [value, setValue] = React.useState(dayjs('2022-04-17'));

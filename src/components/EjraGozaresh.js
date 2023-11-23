@@ -2,6 +2,7 @@ import React from 'react';
 
 
 export default function EjraGozaresh(props) {
+    console.log(props.reportDate[0])
         return (
             <div className='gozaresh-container'>
                 <div className='gozaresh-child-container'>
@@ -10,7 +11,9 @@ export default function EjraGozaresh(props) {
                     <div>اتصال:{props.connection}</div>
                 </div>
                 <div className='gozaresh-child-container'>
-                    <div>محدوده تاری‍‍خ:{props.reportDate}تا محدوده تاری‍‍خ:{10/10/10}تا </div>
+                    <div>محدوده تاری‍‍خ:
+                        <span>`${JSON.stringify(props.reportDate[0])},`</span>
+                    </div>
                     <div>نوع گزارش:{props.reportType}</div>
                 </div>
             </div>
