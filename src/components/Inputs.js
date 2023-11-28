@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import rtlPlugin from 'stylis-plugin-rtl';
 import EjraGozaresh from "./EjraGozaresh";
 export default function Inputs() {
+    const [ejradlg,setejradlg] = React.useState(false)
     const theme = createTheme({
         direction: 'rtl',
     });
@@ -54,6 +55,7 @@ export default function Inputs() {
     function handleSubmit(event) {
         event.preventDefault()
         console.log(formData)
+        setejradlg(() => !ejradlg)
         // const inputsData = [
         //     {measurePosition : formData.measurePosition},
         //     {checkList : formData.checkList},
@@ -65,7 +67,7 @@ export default function Inputs() {
 
     return (
         <div className='form-container'>
-            <form className='form-contex' onSubmit={handleSubmit}>
+            <form className='form-contex no-print' onSubmit={handleSubmit}>
                 <div className='column-button'>
                     <CacheProvider value={cacheRtl}>
                     <ThemeProvider theme={theme}>
@@ -181,6 +183,7 @@ export default function Inputs() {
                 <button className='form-submit'>اجرای گزارش</button>
             </form>
             <EjraGozaresh
+                dlgOpen = {ejradlg}
                 measurePosition = {formData.measurePosition}
                 checkList = {formData.checkList}
                 connection = {formData.connection}

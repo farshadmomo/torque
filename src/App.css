@@ -1,11 +1,8 @@
 @media print {
-    .no-print { display: none}
+    .no-print { display: none !important;}
 }
 *{
     font-family:"B Homa";
-}
-.form-container {
-
 }
 .torque-header {
     display: flex;
@@ -92,6 +89,9 @@
     background-color: #ccddff;
     border-radius: 12px;
 }
+.form-submit:active {
+    margin: 50px 35.3%;
+}
 .range-picker {
     border-radius: 15px;
     border: 1px black solid;
@@ -121,4 +121,6 @@
 .gozaresh-child-container>div {
     margin: 17px 50px;
 }
-
+.gozaresh-closed {
+    display: none;
+}

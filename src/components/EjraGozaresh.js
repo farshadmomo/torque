@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function EjraGozaresh(props) {
         return (
-            <div className='gozaresh-container'>
+            <div className={props.dlgOpen?'gozaresh-container':'gozaresh-closed'}>
                 <div className='gozaresh-child-container'>
                     <div>موقعیت اندازه گیری:{props.measurePosition}</div>
                     <div>نوع چک لیست:{props.checkList}</div>
